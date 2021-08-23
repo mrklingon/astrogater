@@ -1,3 +1,8 @@
+namespace SpriteKind {
+    export const label = SpriteKind.create()
+    export const strs = SpriteKind.create()
+    export const constmap = SpriteKind.create()
+}
 function createStars () {
     consts = [
     "Constellation",
@@ -447,25 +452,177 @@ function createStars () {
     "90°N – 55°S"
     ]
 }
+controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
+    map += -1
+    if (map < 0) {
+        map = maxmap
+    }
+    cur.say(map, 500)
+})
+function GetName (num: number) {
+    element = 5 * num + 1
+    return consts[element]
+}
+controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
+    Type = "image"
+    showMap(map)
+})
+controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
+    Type = "data"
+    showData(Current)
+})
+function createImages () {
+    Maps = [assets.image`Andromeda`, assets.image`Antlia`, assets.image`Apus`]
+    Refs = [1, 2, 3]
+}
+controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
+    Current += -1
+    if (Current < 1) {
+        Current = 88
+    }
+    cur.say(Current, 500)
+})
+function showMap (num: number) {
+    showData(Refs[num])
+    Current = Refs[num]
+    starimage = sprites.create(Maps[num], SpriteKind.constmap)
+    starimage.setPosition(130, 85)
+    starimage.setVelocity(0, 0)
+    pause(2000)
+    starimage.destroy()
+}
+controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
+    Current += 1
+    if (Current > 88) {
+        Current = 1
+    }
+    cur.say(Current, 500)
+})
+function showData (num: number) {
+    Cnst.say(GetConst(num), 2000)
+    English.say(GetName(num), 2000)
+    Quad.say(GetQuad(num), 2000)
+}
+controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
+    map += 1
+    if (map > maxmap) {
+        map = 0
+    }
+    cur.say(map, 500)
+})
 function GetConst (num: number) {
     element = 5 * num
     return consts[element]
 }
+function GetQuad (num: number) {
+    element = 5 * num + 3
+    return consts[element]
+}
+let bstars: Sprite = null
+let starimage: Sprite = null
+let Refs: number[] = []
 let element = 0
 let consts: string[] = []
-scene.setBackgroundColor(15)
-effects.starField.startScreenEffect()
+let Type = ""
+let Current = 0
+let Quad: Sprite = null
+let cur: Sprite = null
+let English: Sprite = null
+let Cnst: Sprite = null
+let Maps: Image[] = []
+let maxmap = 0
+let map = 0
+scene.setBackgroundImage(assets.image`LCARS`)
 createStars()
+createImages()
+map = 0
+maxmap = Maps.length - 1
+Cnst = sprites.create(img`
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . f f f f . . . . . . . 
+    . . . . . f . . f . . . . . . . 
+    . . . . . f . . f . . . . . . . 
+    . . . . . f f f f . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    `, SpriteKind.label)
+English = sprites.create(img`
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . f f f f . . . . . . . 
+    . . . . . f . . f . . . . . . . 
+    . . . . . f . . f . . . . . . . 
+    . . . . . f f f f . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    `, SpriteKind.label)
+cur = sprites.create(img`
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . f f f f . . . . . . . 
+    . . . . . f . . f . . . . . . . 
+    . . . . . f . . f . . . . . . . 
+    . . . . . f f f f . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    `, SpriteKind.label)
+Quad = sprites.create(img`
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . f f f f . . . . . . . 
+    . . . . . f . . f . . . . . . . 
+    . . . . . f . . f . . . . . . . 
+    . . . . . f f f f . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    `, SpriteKind.label)
+Cnst.setPosition(5, 73)
+English.setPosition(5, 93)
+Quad.setPosition(5, 113)
+cur.setPosition(91, 70)
 let Enterprise = sprites.create(img`
     ................................
     ................................
     ................................
     ................................
     ................................
-    ..111111111111.....1111111......
-    ........11.........11...........
-    ..........1111...11.............
-    ..............111...............
+    .....2111111111....1111111111111
+    ...........11.........111.......
+    .............11...1111..........
+    ...............11111............
     ................................
     ................................
     ................................
@@ -474,9 +631,65 @@ let Enterprise = sprites.create(img`
     ................................
     ................................
     `, SpriteKind.Player)
-Enterprise.setVelocity(50, 50)
-Enterprise.setBounceOnWall(true)
-for (let index = 0; index <= 89; index++) {
-    Enterprise.say(GetConst(index), 1000)
-    pause(1000)
-}
+Enterprise.setPosition(68, 20)
+Current = 1
+Type = "data"
+let stars = [img`
+    . . . . . . . . . . . . . . . . 
+    . . 1 . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . 1 . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . 1 . . . . . . . . 1 . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    `, img`
+    . . . . . . . . . . . . . . . . 
+    1 . . . . . . . . . . . . . 1 . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . 1 . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . 1 . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    `, img`
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . 1 . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . 1 . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . 1 
+    . 1 . . . . . . . . . . . . . . 
+    `]
+game.onUpdateInterval(500, function () {
+    bstars = sprites.create(stars[randint(0, 2)], SpriteKind.strs)
+    bstars.setPosition(146, randint(10, 40))
+    bstars.setFlag(SpriteFlag.DestroyOnWall, true)
+    bstars.setVelocity(randint(-50, -20), 0)
+    pause(100)
+})
