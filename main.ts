@@ -489,7 +489,11 @@ function createImages () {
     assets.image`Canis Venatici`,
     assets.image`Canis Major`,
     assets.image`Canis Venatici`,
-    assets.image`Capricornus`
+    assets.image`Capricornus`,
+    assets.image`Carina`,
+    assets.image`Cassiopeia`,
+    assets.image`Centaurus`,
+    assets.image`Cepheus`
     ]
     Refs = [
     1,
@@ -507,7 +511,11 @@ function createImages () {
     13,
     14,
     15,
-    16
+    16,
+    17,
+    18,
+    19,
+    20
     ]
 }
 controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
