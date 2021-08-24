@@ -540,7 +540,6 @@ function GetQuad (num: number) {
     element = 5 * num + 3
     return consts[element]
 }
-let bstars: Sprite = null
 let starimage: Sprite = null
 let Refs: number[] = []
 let element = 0
@@ -653,7 +652,9 @@ let Enterprise = sprites.create(img`
     ................................
     ................................
     `, SpriteKind.Player)
+Enterprise.setVelocity(20, 0)
 Enterprise.setPosition(68, 20)
+Enterprise.setBounceOnWall(true)
 Current = 1
 Type = "data"
 let stars = [img`
@@ -708,10 +709,3 @@ let stars = [img`
     . . . . . . . . . . . . . . . 1 
     . 1 . . . . . . . . . . . . . . 
     `]
-game.onUpdateInterval(500, function () {
-    bstars = sprites.create(stars[randint(0, 2)], SpriteKind.strs)
-    bstars.setPosition(146, randint(10, 40))
-    bstars.setFlag(SpriteFlag.AutoDestroy, true)
-    bstars.setVelocity(randint(-50, -20), 0)
-    pause(1000)
-})
