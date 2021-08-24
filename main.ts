@@ -457,7 +457,8 @@ controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
     if (map < 0) {
         map = maxmap
     }
-    cur.say(map, 500)
+    cur.say(Refs[map], 500)
+    showMap(map)
 })
 function GetName (num: number) {
     element = 5 * num + 1
@@ -503,6 +504,7 @@ controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
         Current = 88
     }
     cur.say(Current, 500)
+    showData(Current)
 })
 function showMap (num: number) {
     showData(Refs[num])
@@ -519,6 +521,7 @@ controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
         Current = 1
     }
     cur.say(Current, 500)
+    showData(Current)
 })
 function showData (num: number) {
     Cnst.say(GetConst(num), 2000)
@@ -530,7 +533,8 @@ controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
     if (map > maxmap) {
         map = 0
     }
-    cur.say(map, 500)
+    cur.say(Refs[map], 500)
+    showMap(map)
 })
 function GetConst (num: number) {
     element = 5 * num
@@ -541,8 +545,8 @@ function GetQuad (num: number) {
     return consts[element]
 }
 let starimage: Sprite = null
-let Refs: number[] = []
 let element = 0
+let Refs: number[] = []
 let consts: string[] = []
 let Type = ""
 let Current = 0
