@@ -472,8 +472,30 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     showData(Current)
 })
 function createImages () {
-    Maps = [assets.image`Andromeda`, assets.image`Antlia`, assets.image`Apus`]
-    Refs = [1, 2, 3]
+    Maps = [
+    assets.image`Andromeda`,
+    assets.image`Antlia`,
+    assets.image`Apus`,
+    assets.image`Aquarius`,
+    assets.image`Aquila`,
+    assets.image`Ara`,
+    assets.image`Aries`,
+    assets.image`Auriga`,
+    assets.image`Bootes`,
+    assets.image`Caelum`
+    ]
+    Refs = [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+    ]
 }
 controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
     Current += -1
@@ -689,7 +711,7 @@ let stars = [img`
 game.onUpdateInterval(500, function () {
     bstars = sprites.create(stars[randint(0, 2)], SpriteKind.strs)
     bstars.setPosition(146, randint(10, 40))
-    bstars.setFlag(SpriteFlag.DestroyOnWall, true)
+    bstars.setFlag(SpriteFlag.AutoDestroy, true)
     bstars.setVelocity(randint(-50, -20), 0)
-    pause(100)
+    pause(1000)
 })
