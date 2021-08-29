@@ -508,7 +508,11 @@ function createImages () {
     assets.image`Delphinus`,
     assets.image`Dorado`,
     assets.image`Draco`,
-    assets.image`Equuleus`
+    assets.image`Equuleus`,
+    assets.image`Eridanus`,
+    assets.image`Fornax`,
+    assets.image`Gemini`,
+    assets.image`Grus`
     ]
     Refs = [
     1,
@@ -545,7 +549,11 @@ function createImages () {
     32,
     33,
     34,
-    35
+    35,
+    36,
+    37,
+    38,
+    39
     ]
 }
 controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
