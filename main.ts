@@ -521,7 +521,20 @@ function createImages () {
     assets.image`Lacerta`,
     assets.image`Leo`,
     assets.image`Leo Minor`,
-    assets.image`blank5`
+    assets.image`blank5`,
+    assets.image`Libra`,
+    assets.image`Lupus`,
+    assets.image`Lynx`,
+    assets.image`Lyra`,
+    assets.image`Mensa`,
+    assets.image`Microscopium`,
+    assets.image`Monoceros`,
+    assets.image`Musca`,
+    assets.image`Norma`,
+    assets.image`Octans`,
+    assets.image`Opiuchus`,
+    assets.image`Orion`,
+    assets.image`Pavo`
     ]
     Refs = [
     1,
@@ -571,7 +584,20 @@ function createImages () {
     45,
     46,
     47,
-    48
+    48,
+    49,
+    50,
+    51,
+    52,
+    53,
+    54,
+    55,
+    56,
+    57,
+    58,
+    59,
+    60,
+    61
     ]
 }
 controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
