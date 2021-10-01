@@ -534,7 +534,23 @@ function createImages () {
     assets.image`Octans`,
     assets.image`Opiuchus`,
     assets.image`Orion`,
-    assets.image`Pavo`
+    assets.image`Pavo`,
+    assets.image`Pegasus`,
+    assets.image`Perseus`,
+    assets.image`Phoenix`,
+    assets.image`Pictor`,
+    assets.image`Pisces`,
+    assets.image`Piscis Austrinus`,
+    assets.image`Puppis`,
+    assets.image`Pyxis`,
+    assets.image`Reticulum`,
+    assets.image`Sagitta`,
+    assets.image`Sagittarius`,
+    assets.image`Scorpius`,
+    assets.image`Sculptor`,
+    assets.image`Scutum`,
+    assets.image`Serpens`,
+    assets.image`Sextans`
     ]
     Refs = [
     1,
@@ -597,7 +613,23 @@ function createImages () {
     58,
     59,
     60,
-    61
+    61,
+    62,
+    63,
+    64,
+    65,
+    66,
+    67,
+    68,
+    69,
+    70,
+    71,
+    72,
+    73,
+    74,
+    75,
+    76,
+    77
     ]
 }
 controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
